@@ -1,9 +1,0 @@
-define LOADER_USED 1
-ADCON1=7
-PAUSE 100
-
-trisa=%000000
-trisb=%00000000
-porta.0 = 1
-
-portb = %11111100

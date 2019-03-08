@@ -1,3 +1,14 @@
+'****************************************************************
+'*  Name    : bipLed                                     *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2019 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 3/8/2019                                          *
+'*  Version : 1.0                                               *
+'*  Notes   : this is for everyone                              *
+'*          :                                                   *
+'****************************************************************
+
 define LOADER_USED 1
 ADCON1=7 'tüm analog pinleri dijitale çevirir (A ve E portlarý)
 
