@@ -1,0 +1,47 @@
+define LOADER_USED 1
+ADCON1=7 'tüm analog pinleri dijitale çevirir (A ve E portlarý)
+
+TRISA=%000000  'ÇIKIÞLAR 0 GÝRÝÞLER 1 OLARAK TANIMLANDI.GÝRÝÞ PÝNÝ ÞUANDA YOK
+      
+TRISB=%00000000  '$00 HEXADEC VEYA 0 DEC
+PortA=0
+PortB=0
+porta.0 = 1
+symbol ses = porta.5
+
+'yakson:
+'    PortB.0 = 1 
+'    sound porta.5,[70,50]
+'   ' sound porta.5,[80,50] 
+'    'pause 500
+'    PortB.0 = 0 
+'    'sound porta.5,[0] 
+'    pause 500
+'goto yakson 
+
+'''Kaydýrmalý led ve bip
+i var byte
+i = 125
+
+ikili:
+    'portb = 1  :sound ses, [i,25] 
+    gosub kaydirma
+   ' portb = 128:sound ses, [i,25]
+    gosub geriye
+goto ikili
+
+   
+kaydirma:
+    i = i-15
+    sound ses, [i,25]
+    portb = portb << 1
+    IF portb=128 THEN return
+    goto kaydirma 
+
+geriye:
+    i = i+15
+    sound ses, [i,25]
+    portb = portb >> 1 
+    if portb = 0 then return
+    goto geriye
+

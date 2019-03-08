@@ -1,0 +1,32 @@
+'****************************************************************
+'*  Name    : SAYDIRMA.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 1.10.2018                                         *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+
+trisb = %10000000
+symbol buton = portb.7
+buton = 0
+i var byte
+i = 0
+
+'label:
+'    if i = 9 then i = 0 : pause 500
+'    portb = i
+'    i = i+1
+'    pause 500
+'goto label
+
+label:
+if buton = 1 then i = i+1
+portb = i
+if portb.3 = 1 then i = 0 : portb = i : pause 25
+
+while buton = 1
+wend
+goto label

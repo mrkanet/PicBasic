@@ -1,0 +1,44 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 5.11.2018                                         *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+
+
+include "lcdtan.pbp"
+trisa=%00000011
+symbol dk = porta.0
+symbol saat = porta.1
+dk = 1
+saat = 1
+snx var byte
+snx = 0
+dkx var byte
+dkx = 0
+saatx var byte
+saatx = 0
+label:       
+    lcdout $fe,1
+    if dk = 0 then
+         dkx = dkx + 1
+         while dk=0
+         wend
+    endif
+    if saat = 0 then 
+        saatx = saatx + 1
+        while saat = 0
+        wend
+    endif
+    snx = snx + 1
+    if snx = 60 then dkx = dkx + 1 : snx = 0
+    if dkx = 60 then saatx = saatx + 1 : dkx = 0
+    if saatx = 24 then saatx = 0
+    lcdout #saatx,":",#dkx,":",#snx    
+    pause 50
+   ' if dk = 0 or saat = 0 then goto label2
+goto label

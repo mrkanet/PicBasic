@@ -1,0 +1,24 @@
+define LOADER_USED 1
+ADCON1=7
+PAUSE 100
+
+define HSER_RCSTA 90h
+define HSER_TXSTA 24H
+define HSER_BAUD 9600
+define HSER_CLROERR 1
+ent var byte
+TRISA=%000000  'ÇIKIÞLAR 0 GÝRÝÞLER 1 OLARAK TANIMLANDI.GÝRÝÞ PÝNÝ ÞUANDA YOK
+      
+TRISB=%00000000  '$00 HEXADEC VEYA 0 DEC
+PortA=0
+PortB=0
+portb = 1
+
+hserout ["Basla",13,10]
+ad:
+   hserin [str ent\1]
+   if ent = "d" and portb != 0 then portb = portb >> 1  
+   if portb = 0 and ent = "d" then portb = 128
+   if ent = "a" and portb != 128 then portb = portb << 1 
+   if ent = "a" and portb = 128 then portb = 1   
+goto ad

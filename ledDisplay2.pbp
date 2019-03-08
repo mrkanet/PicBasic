@@ -1,0 +1,68 @@
+define LOADER_USED 1
+ADCON1=7
+PAUSE 100
+
+trisa=%000000
+trisb=%00000000
+porta = 0
+
+rakam var byte [10]
+
+rakam[0] = %00111111
+rakam[1] = %00000110
+rakam[2] = %01011011
+rakam[3] = %01001111
+rakam[4] = %01100110
+rakam[5] = %01101101
+rakam[6] = %01111101
+rakam[7] = %00000111
+rakam[8] = %01111111
+rakam[9] = %01101111
+
+i var byte 
+j var byte
+
+i = 0 : j = 0
+
+'label:
+'    for i = 0 to 9
+'        porta.1 = 1
+'        portb = rakam[i]
+'        for j = 0 to 9
+'            porta.1 = 0
+'            porta.0 = 1
+'            portb = rakam[j]
+'        next j
+'    next i
+'goto label
+
+s var byte
+
+yazdir:
+    for s = 0 to 10
+        porta = 0
+        porta.0 = 1 
+        portb = rakam[i]
+        pause 10
+        porta.0 = 0 
+        porta.1 = 1
+        portb = rakam[j]
+        pause 10
+     next s  
+
+
+ 
+    if i = 9 then
+        if j = 9 then
+            i = 0 : j = 0
+            goto yazdir
+        else
+            j = j+1
+            i = 0
+        endif
+    else
+        i = i+1
+    endif
+ goto yazdir
+    
+

@@ -1,0 +1,36 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 5.11.2018                                         *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+
+'LCDOUT $fe, $40, data1, data2, data3, data4, data5, data6, data7, data8 decimal 
+'deðer girilebilir veya "$" ile beraber $1 gibi hex deðer girilebilir.
+
+'lcd de $80...8e 
+
+'lcdout $fe, $40, 4,14,31,31,31,4,4,0
+'label:
+'    lcdout 0
+'    pause 100  
+'    lcdout $fe,1
+'goto label      
+
+INCLUDE "lcdtan.pbp"
+lcdout $fe,$40,$f,$10,$10,$10,$10,$f,$4,$0 'ç    'lcdout $fe, $40,15,16,16,16,16,15,4,0 
+lcdout $fe,$48,14,17,8,6,17,14,4,0         'þ
+lcdout $fe,$50,10,0,17,17,17,17,14,0       'ü
+lcdout $fe,$58,10,0,14,17,17,17,14,0       'ö
+lcdout $fe,$60,4,0,14,4,4,4,4,14,0         'Ý
+'çöl güneþi
+label:
+lcdout $fe,1
+lcdout 0,3,"l g",2,"ne",1,"i"
+pause 100
+goto label
+

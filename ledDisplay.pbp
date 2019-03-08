@@ -1,0 +1,35 @@
+define LOADER_USED 1
+ADCON1=7
+PAUSE 100
+
+trisa=%000000
+trisb=%00000000
+porta.0 = 1
+
+rakam var byte [10]
+
+rakam[0] = %00111111
+rakam[1] = %00000110
+rakam[2] = %01011011
+rakam[3] = %01001111
+rakam[4] = %01100110
+rakam[5] = %01101101
+rakam[6] = %01111101
+rakam[7] = %00000111
+rakam[8] = %01111111
+rakam[9] = %01101111
+
+i var byte 
+i = 0
+label:
+    portb = rakam[i]
+    if i == 9 then
+     i = 0
+    else 
+    i = i+1
+    endif
+    pause 200
+     
+goto label
+
+

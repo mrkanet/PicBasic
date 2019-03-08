@@ -1,0 +1,19 @@
+define LOADER_USED 1
+ADCON1=7 'tüm analog pinleri dijitale çevirir (A ve E portlarý)
+
+TRISA=%000000  'ÇIKIÞLAR 0 GÝRÝÞLER 1 OLARAK TANIMLANDI.GÝRÝÞ PÝNÝ ÞUANDA YOK
+      
+TRISB=%00000000  '$00 HEXADEC VEYA 0 DEC
+PortA=0
+PortB=0
+
+SYMBOL ledonoff=PortA.0
+i var byte
+ledonoff = 1  
+symbol ses = porta.5
+
+devam:
+    for i=0 to 255
+        sound ses,[i,5,i+10,5]
+    next i
+goto devam

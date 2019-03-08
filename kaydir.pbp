@@ -1,0 +1,452 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 15.10.2018                                        *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+trisb = 0
+trisc = 0
+portb = 0 
+portc = 0
+
+e var byte [8]
+e[0] = %00000000
+e[1] = %00000000
+e[2] = %10000000
+e[3] = %10000001
+e[4] = %10001001
+e[5] = %10001001
+e[6] = %10001001
+e[7] = %11111111
+
+y var byte [8]
+y[0] = %00000000
+y[1] = %00000001
+y[2] = %00000010
+y[3] = %00000100
+y[4] = %11111000
+y[5] = %00000100
+y[6] = %00000010
+y[7] = %00000001                    
+
+uu var byte [8]
+uu[0] = %00000000
+uu[1] = %11111110
+uu[2] = %10000000
+uu[3] = %10000001
+uu[4] = %10000000
+uu[5] = %10000001
+uu[6] = %10000000
+uu[7] = %11111110
+
+p var byte [8]
+p[1] = %00000100
+p[2] = %00001010
+p[3] = %00010001
+p[4] = %00010001
+p[5] = %00010001
+p[6] = %00010001
+p[7] = %11111111
+p[0] = %00000000
+
+
+j var byte
+k var byte
+i var byte
+'its var byte
+'its = 100
+
+'label2: 
+                     
+'    for j = 0 to its
+'        k = 1
+'        for i = 0 to 7
+'            portb = ~k
+'            portc = e[i]
+'            pause 5
+''            if k = 128 then goto label2
+'            k = k<<1
+'        next i
+'    next j
+'goto label3
+
+'label3:
+'    for j = 0 to its
+'        k = 1
+'        for i = 0 to 7
+'            portb = ~k
+'            portc = y[i]
+'            pause 5
+''            if k = 128 then goto label2
+'            k = k<<1
+'        next i
+'    next j
+'goto label4
+'label4:
+'    for j = 0 to its
+'        k = 1
+'        for i = 0 to 7
+'            portb = ~k
+'            portc = uu[i]
+'            pause 5
+''            if k = 128 then goto label2
+'            k = k<<1
+'        next i
+'    next j
+'goto label5
+
+'label5:
+'    for j = 0 to its
+'        k = 1
+'        for i = 0 to 7
+'            portb = ~k
+'            portc = p[i]
+'            pause 5
+''            if k = 128 then goto label2
+'            k = k<<1
+'        next i
+'    next j
+'goto label2
+
+
+    
+'y[2] = %00000000
+'y[3] = %00000001
+'y[4] = %00000010
+'y[5] = %00000100
+'y[6] = %11111000
+'y[7] = %00000100
+'y[0] = %00000010
+'y[1] = %00000001
+    
+    
+'a var byte [8]
+'kaydir:
+'    for i = 0 to 28
+'            if i=0 then
+'            a[0] = e[0]
+'            a[1] = e[1]
+'            a[2] = e[2]
+'            a[3] = e[3]
+'            a[4] = e[4]
+'            a[5] = e[5]
+'            a[6] = e[6]
+'            a[7] = e[7]
+'        endif
+'        if i=1 then
+'            a[0] = e[1]
+'            a[1] = e[2]
+'            a[2] = e[3]
+'            a[3] = e[4]
+'            a[4] = e[5]
+'            a[5] = e[6]
+'            a[6] = e[7]
+'            a[7] = y[0]
+'        endif 
+'        if i=2 then
+'            a[0] = e[2]
+'            a[1] = e[3]
+'            a[2] = e[4]
+'            a[3] = e[5]
+'            a[4] = e[6]
+'            a[5] = e[7]
+'            a[6] = y[0]
+'            a[7] = y[1]
+'        endif 
+'        if i=3 then   
+'            a[0] = e[3]
+'            a[1] = e[4]
+'            a[2] = e[5]
+'            a[3] = e[6]
+'            a[4] = e[7]
+'            a[5] = y[0]
+'            a[6] = y[1]
+'            a[7] = y[2]
+'        endif 
+'        if i=4 then  
+'            a[0] = e[4]
+'            a[1] = e[5]
+'            a[2] = e[6]
+'            a[3] = e[7]
+'            a[4] = y[0]
+'            a[5] = y[1]
+'            a[6] = y[2]
+'            a[7] = y[3]
+'        endif 
+'        if i=5 then 
+'            a[0] = e[5]
+'            a[1] = e[6]
+'            a[2] = e[7]
+'            a[3] = y[0]
+'            a[4] = y[1]
+'            a[5] = y[2]
+'            a[6] = y[3]
+'            a[7] = y[4]
+'        endif 
+'        if i=6 then 
+'            a[0] = e[6]
+'            a[1] = e[7]
+'            a[2] = y[0]
+'            a[3] = y[1]
+'            a[4] = y[2]
+'            a[5] = y[3]
+'            a[6] = y[4]
+'            a[7] = y[5]
+'        endif 
+'        if i=7 then 
+'            a[0] = e[7]
+'            a[1] = y[0]
+'            a[2] = y[1]
+'            a[3] = y[2]
+'            a[4] = y[3]
+'            a[5] = y[4]
+'            a[6] = y[5]
+'            a[7] = y[6]
+'        endif 
+'        if i=8 then 
+'            a[0] = y[0]
+'            a[1] = y[1]
+'            a[2] = y[2]
+'            a[3] = y[3]
+'            a[4] = y[4]
+'            a[5] = y[5]
+'            a[6] = y[6]
+'            a[7] = y[7]  
+'        endif 
+'        if i=9 then 
+'            a[0] = y[1]
+'            a[1] = y[2]
+'            a[2] = y[3]
+'            a[3] = y[4]
+'            a[4] = y[5]
+'            a[5] = y[6]
+'            a[6] = y[7]
+'            a[7] = uu[0]
+'        endif 
+'        if i=10 then 
+'            a[0] = y[2]
+'            a[1] = y[3]
+'            a[2] = y[4]
+'            a[3] = y[5]
+'            a[4] = y[6]
+'            a[5] = y[7]
+'            a[6] = uu[0]
+'            a[7] = uu[1]
+'        endif 
+'        if i=11 then 
+'            a[0] = y[3]
+'            a[1] = y[4]
+'            a[2] = y[5]
+'            a[3] = y[6]
+'            a[4] = y[7]
+'            a[5] = uu[0]
+'            a[6] = uu[1]
+'            a[7] = uu[2]
+'        endif 
+'        if i=12 then 
+'            a[0] = y[4]
+'            a[1] = y[5]
+'            a[2] = y[6]
+'            a[3] = y[7]
+'            a[4] = uu[0]
+'            a[5] = uu[1]
+'            a[6] = uu[2]
+'            a[7] = uu[3]
+'        endif 
+'        if i=13 then 
+'            a[0] = y[5]
+'            a[1] = y[6]
+'            a[2] = y[7]
+'            a[3] = uu[0]
+'            a[4] = uu[1]
+'            a[5] = uu[2]
+'            a[6] = uu[3]
+'            a[7] = uu[4]
+'        endif 
+'        if i=14 then 
+'            a[0] = y[6]
+'            a[1] = y[7]
+'            a[2] = uu[0]
+'            a[3] = uu[1]
+'            a[4] = uu[2]
+'            a[5] = uu[3]
+'            a[6] = uu[4]
+'            a[7] = uu[5]
+'        endif 
+'        if i=15 then 
+'            a[0] = y[7]
+'            a[1] = uu[0]
+'            a[2] = uu[1]
+'            a[3] = uu[2]
+'            a[4] = uu[3]
+'            a[5] = uu[4]
+'            a[6] = uu[5]
+'            a[7] = uu[6]
+'        endif 
+'        if i=16 then 
+'            a[0] = uu[0]
+'            a[1] = uu[1]
+'            a[2] = uu[2]
+'            a[3] = uu[3]
+'            a[4] = uu[4]
+'            a[5] = uu[5]
+'            a[6] = uu[6]
+'            a[7] = uu[7]
+'        endif 
+'        if i=17 then 
+'            a[0] = uu[1]
+'            a[1] = uu[2]
+'            a[2] = uu[3]
+'            a[3] = uu[4]
+'            a[4] = uu[5]
+'            a[5] = uu[6]
+'            a[6] = uu[7]
+'            a[7] = p[0]
+'        endif 
+'        if i=18 then 
+'            a[0] = uu[2]
+'            a[1] = uu[3]
+'            a[2] = uu[4]
+'            a[3] = uu[5]
+'            a[4] = uu[6]
+'            a[5] = uu[7]
+'            a[6] = p[0]
+'            a[7] = p[1]
+'        endif 
+'        if i=19 then 
+'            a[0] = uu[3]
+'            a[1] = uu[4]
+'            a[2] = uu[5]
+'            a[3] = uu[6]
+'            a[4] = uu[7]
+'            a[5] = p[0]
+'            a[6] = p[1]
+'            a[7] = p[2]
+'        endif 
+'        if i=20 then 
+'            a[0] = uu[4]
+'            a[1] = uu[5]
+'            a[2] = uu[6]
+'            a[3] = uu[7]
+'            a[4] = p[0]
+'            a[5] = p[1]
+'            a[6] = p[2]
+'            a[7] = p[3]
+'        endif 
+'        if i=21 then 
+'            a[0] = uu[5]
+'            a[1] = uu[6]
+'            a[2] = uu[7]
+'            a[3] = p[0]
+'            a[4] = p[1]
+'            a[5] = p[2]
+'            a[6] = p[3]
+'            a[7] = p[4]
+'        endif 
+'        if i=22 then 
+'            a[0] = uu[6]
+'            a[1] = uu[7]
+'            a[2] = p[0]
+'            a[3] = p[1]
+'            a[4] = p[2]
+'            a[5] = p[3]
+'            a[6] = p[4]
+'            a[7] = p[5]
+'        endif 
+'        if i=23 then 
+'            a[0] = uu[7]
+'            a[1] = p[0]
+'            a[2] = p[1]
+'            a[3] = p[2]
+'            a[4] = p[3]
+'            a[5] = p[4]
+'            a[6] = p[5]
+'            a[7] = p[6]
+'        endif 
+'        if i=24 then 
+'            a[0] = p[0]
+'            a[1] = p[1]
+'            a[2] = p[2]
+'            a[3] = p[3]
+'            a[4] = p[4]
+'            a[5] = p[5]
+'            a[6] = p[6]
+'            a[7] = p[7]
+'        endif 
+'        if i=25 then 
+'            a[0] = p[1]
+'            a[1] = p[2]
+'            a[2] = p[3]
+'            a[3] = p[4]
+'            a[4] = p[5]
+'            a[5] = p[6]
+'            a[6] = p[7]
+'            a[7] = e[0]
+'        endif 
+'        if i=26 then 
+'            a[0] = p[2]
+'            a[1] = p[3]
+'            a[2] = p[4]
+'            a[3] = p[5]
+'            a[4] = p[6]
+'            a[5] = p[7]
+'            a[6] = e[0]
+'            a[7] = e[1]
+'        endif 
+'        if i=27 then 
+'            a[0] = p[3]
+'            a[1] = p[4]
+'            a[2] = p[5]
+'            a[3] = p[6]
+'            a[4] = p[7]
+'            a[5] = e[0]
+'            a[6] = e[1]
+'            a[7] = e[2]
+'        endif 
+'        if i=28 then 
+'            a[0] = p[4]
+'            a[1] = p[5]
+'            a[2] = p[6]
+'            a[3] = p[7]
+'            a[4] = e[0]
+'            a[5] = e[1]
+'            a[6] = e[2]
+'            a[7] = e[3]
+'        endif
+kaydir:
+        k=1
+        for j = 0 to 7
+            portb = ~k
+'            portc = a[j]
+            pause 5
+'            if k = 128 then goto kaydir
+            k = k<<1
+        next j
+'    next i
+goto kaydir
+    
+    
+              
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
+    
+    
+    
+    

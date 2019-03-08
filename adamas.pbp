@@ -1,0 +1,123 @@
+'****************************************************************
+'*  Name    : adam asmaca.BAS                                   *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 25.12.2018                                        *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+DEFINE LCD_DREG PORTD 'LCD DATA PROB START PIC
+DEFINE LCD_DBIT 0
+DEFINE LCD_RSREG PORTE               'LCD Tanýmlamasý
+DEFINE LCD_RSBIT 0
+DEFINE LCD_EREG PORTE
+DEFINE LCD_EBIT 2
+DEFINE LCD_BITS 8
+ADCON1=7
+PAUSE 100
+
+define HSER_RCSTA 90h
+define HSER_TXSTA 24H                 'Terminal 
+define HSER_BAUD 9600                 'Tanýmlamasý
+define HSER_CLROERR 1
+
+i var byte 
+'j var byte
+'den var byte 
+kelime var byte [6]
+kelime[0] = "k"
+kelime[1] = "e"
+kelime[2] = "l"
+kelime[3] = "i"
+kelime[4] = "m"
+kelime[5] = "e"
+chance var  byte : chance = 10
+fr var byte : fr = 0 
+loc var byte : loc = 0
+
+lcdout $fe, 1
+lcdout "Kalan sans: ",#chance
+pause 500
+lcdout $fe, 1
+if loc == 0 then lcdout "______"
+
+yes var byte
+yes = 0
+
+oyun:           
+    chance = 10
+    hserout ["Adam asmaca oyununa hos geldin",13,10]
+    
+    girdi: 
+        if chance = 0 then goto bitis   
+        hserout ["Hamle: ",13,10]
+        hserin [str i\1]
+        if i = kelime[loc] then gosub dogru : chance = 10 
+        if i != kelime[loc] and yes = 0 then chance = chance - 1 : gosub tryagain : goto girdi
+        if loc = 6 then lcdout $fe, 1: lcdout "kelime" : pause 1000 : goto bitis
+        if yes = 1 then yes = 0 : goto yaz
+        
+    
+yaz:
+    lcdout $fe, 1
+    if loc == 1 then lcdout "k_____"
+    if loc == 2 then lcdout "ke____"
+    if loc == 3 then lcdout "kel___"
+    if loc == 4 then lcdout "keli__"
+    if loc == 5 then lcdout "kelim_"
+    if loc == 6 then lcdout "kelime"
+    
+    goto girdi
+    
+
+tryagain:
+    lcdout $fe, 1
+    lcdout "Tekrar deneyiniz.."
+    pause 1000
+    lcdout $fe, 1
+    lcdout "Sansin azaliyor."
+    pause 300
+    lcdout $fe, 1
+    lcdout "Kalan sans: ",#chance
+    pause 500
+    lcdout $fe, 1
+    if loc == 0 then lcdout "______"
+    if loc == 1 then lcdout "k_____"
+    if loc == 2 then lcdout "ke____"
+    if loc == 3 then lcdout "kel___"
+    if loc == 4 then lcdout "keli__"
+    if loc == 5 then lcdout "kelim_"
+    return
+
+dogru:
+    lcdout $fe, 1
+    lcdout "Harfi dogru bildin"
+    pause 1000
+    lcdout $fe, 1
+    lcdout "Sansin sifirlaniyor"
+    pause 500
+    lcdout $fe, 1
+    if loc == 1 then lcdout "k_____"
+    if loc == 2 then lcdout "ke____"
+    if loc == 3 then lcdout "kel___"
+    if loc == 4 then lcdout "keli__"
+    if loc == 5 then lcdout "kelim_"
+    if loc == 6 then lcdout "kelime" 
+    loc = loc + 1
+    yes = 1
+    return
+    
+    
+bitis:  
+    hserout ["Tekrar denemek ister misiniz?",13,10]
+    hserout ["Tekrar denemek icin 1, bitirmek icin 0",13,10]
+    try var byte
+    hserin [str try\1]
+    if try = "1" then loc = 0 : goto oyun  
+    'if try != "1" and try != "0" then goto bitis
+    if try = "0" then endi
+goto bitis
+    
+endi:   

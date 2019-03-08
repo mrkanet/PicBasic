@@ -1,0 +1,40 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 8.10.2018                                         *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+trisb = 0                                                        
+trisc = 0
+portb = 0
+portc = 0
+
+j var byte
+k var byte 
+i var byte [8]
+i[0] = %00100100
+i[1] = %01001010
+i[2] = %10000100
+i[3] = %10110000
+i[4] = %10110000
+i[5] = %10000100
+i[6] = %01001010
+i[7] = %00100100
+m var byte: n var byte: c var byte
+m = %10100000 : n = %10100000 : c = 1
+
+label:
+    k=1
+    for j = 0 to 7
+        portb = ~k
+        portc = i[j]  
+        pause 5
+        if k = 128 then goto label
+        k = k<<1
+    next j
+goto label
+

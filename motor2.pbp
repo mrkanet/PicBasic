@@ -1,0 +1,23 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 10.12.2018                                        *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+
+trisb = 0
+portb = %00001111
+i var byte
+
+
+    bekle con 50
+label:
+    portb = 1:pause bekle  
+    portb = 2:pause bekle
+    portb = 4:pause bekle
+    portb = 8:pause bekle
+goto label

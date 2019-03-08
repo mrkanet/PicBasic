@@ -1,0 +1,4 @@
+define HSER_RCSTA 90h
+define HSER_TXSTA 24H
+define HSER_BAUD 9600
+define HSER_CLROERR 1

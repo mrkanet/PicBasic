@@ -1,0 +1,71 @@
+define LOADER_USED 1
+ADCON1=7 'tüm analog pinleri dijitale çevirir (A ve E portlarý)
+
+TRISA=%000000  'ÇIKIÞLAR 0 GÝRÝÞLER 1 OLARAK TANIMLANDI.GÝRÝÞ PÝNÝ ÞUANDA YOK
+      
+TRISB=%00000000  '$00 HEXADEC VEYA 0 DEC
+PortA=0
+PortB=0
+
+SYMBOL ledonoff=PortA.0
+i var byte
+ledonoff = 1  
+i=1
+'basla:        
+'    PortB.0=1 : PAUse 1000
+'    PortB.0=0 : PAUse 1000
+
+'GOTO basla
+
+'basla:
+    
+'    PortB=%00000001 : PaUSE 250
+'    PortB=%00000010 : PaUSE 250
+'    PortB=%00000100 : PaUSE 250
+'    PortB=%00001000 : PaUSE 250
+'    PortB=%00010000 : PaUSE 250
+'    PortB=%00100000 : PaUSE 250
+'    PortB=%01000000 : PaUSE 250
+'    PortB=%10000000 : PaUSE 250
+
+'GOTO basla:
+
+'devam:   
+'    portb=i
+'    pAuse 250
+    
+'    i=i*2
+'    IF i=128 THEN i=1:portb=i:PaUSE 250 
+'GOTO devam
+    
+'kaydir:
+'    for i=0 to 7
+'        portb = 2^i
+'        pause 250
+'    next i
+'goto kaydir
+
+     
+ikili:
+    portb = 1  :pause 250
+    gosub kaydirma
+    portb = 128:pause 250
+    gosub geriye
+goto ikili
+
+   
+kaydirma:
+    pAuse 250
+    portb = portb << 1
+    IF portb=128 THEN return
+    goto kaydirma 
+
+geriye:
+    pause 250
+    portb = portb >> 1 
+    if portb = 0 then return
+    goto geriye
+
+
+
+

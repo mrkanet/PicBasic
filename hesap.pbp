@@ -1,0 +1,66 @@
+'****************************************************************
+'*  Name    : UNTITLED.BAS                                      *
+'*  Author  : MRKANET                                           *
+'*  Notice  : Copyright (c) 2018 Mrkaan.net                     *
+'*          : All Rights Reserved                               *
+'*  Date    : 15.10.2018                                        *
+'*  Version : 1.0                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+trisb = %11110000
+portb = 0
+trisd = 0
+portd = 0
+portb = %00000001
+symbol a = portb.0
+symbol b = portb.1
+symbol c = portb.2
+symbol d = portb.3  
+symbol one = portb.4
+symbol two = portb.5
+symbol three = portb.6
+symbol four = portb.7
+
+k var byte
+j var byte 
+temp var byte
+sonuc var byte
+
+
+push:    
+    a=1:b=0:c=0:d=0
+    if one = 1 then portd = 7 : sonuc = 7
+    if two = 1 then portd = 8 : sonuc = 8
+    if three = 1 then portd = 9 : sonuc = 9
+    if four = 1 then k = "/" : temp = sonuc : goto push
+    pause 15
+    a=0:b=1:c=0:d=0
+    if one = 1 then portd = 4 : sonuc = 4
+    if two = 1 then portd = 5 : sonuc = 5
+    if three = 1 then portd = 6 : sonuc = 6
+    if four = 1 then k = "*" : temp = sonuc : goto push
+    pause 15
+    a=0:b=0:c=1:d=0
+    if one = 1 then portd = 1 : sonuc = 1
+    if two = 1 then portd = 2 : sonuc = 2
+    if three = 1 then portd = 3 : sonuc = 3
+    if four = 1 then k = "-" : temp = sonuc : goto push
+    pause 15
+    a=0:b=0:c=0:d=1
+    if one = 1 then portd = 0 : sonuc = 0 : goto push
+    if two = 1 then portd = 0 : sonuc = 7
+    if three = 1 then j = "=" : goto hesap
+    if four = 1 then k = "+" : temp = sonuc : goto push
+    pause 15
+goto push
+abdurrahman var byte
+hesap:
+    if k = "/" then abdurrahman = temp / sonuc
+    if k = "*" then abdurrahman = temp * sonuc
+    if k = "-" then abdurrahman = temp - sonuc
+    if k = "+" then abdurrahman = temp + sonuc
+    portd = abdurrahman + (abdurrahman/10)*6
+
+goto push
+    
